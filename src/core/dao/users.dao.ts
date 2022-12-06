@@ -31,8 +31,8 @@ export class UserDAO implements IUserDAO {
 try{
     let userExists = await this.UsersModel.find({emailID : UserInformation.emailID})
     if(userExists.length != 0){
-        this.logger.error("USer exists")
-        throw new HttpException("user exists" , HttpStatus.CONFLICT)
+        this.logger.error(LoggerConstants.USER_EXISTS_ERR)
+        throw new HttpException(ExceptionConstants.USER_EXISTS , HttpStatus.CONFLICT)
     }
         let user = await this.UsersModel.create({
             name : UserInformation.name,
@@ -43,8 +43,8 @@ try{
         return user
     }
     catch(e) {
-this.logger.error(e)
-throw new HttpException("user exists" , HttpStatus.CONFLICT)
+this.logger.error(LoggerConstants.USER_EXISTS_ERR)
+throw new HttpException(ExceptionConstants.USER_EXISTS , HttpStatus.CONFLICT)
     }
 
         
@@ -82,31 +82,4 @@ return user
         throw new HttpException(ExceptionConstants.USER_NOT_FOUND,HttpStatus.BAD_REQUEST)
     }
 }
-
-get = async (emailID) =>{
-    // await this.UsersModel.createIndex({emailID : 1})
-    // this.UsersModel.createIndex( { emailID : -1 }, function(err, result) {
-    
-    //  })
-
-    return await this.UsersModel.find({emailID : emailID})
 }
-
-getUsers=async() =>{
-    return await this.UsersModel.findOne({_id :  "637dd2427e589c96254369c9"})
-}
-
-tryEncryption =
-async(info) =>{
-    this.logger.log("try encryption")
-    let record = await this.UsersModel.create({information :info})
-    return record._id
-
-}
-find = async (id) => 
-{
-let result = await this.UsersModel.findOne({_id : id })
-return result
-}
-}
-

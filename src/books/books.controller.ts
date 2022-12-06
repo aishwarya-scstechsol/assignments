@@ -49,11 +49,13 @@ async getBookByID(@Param (AppConfig.ID) id )  {
     this.logger.log(LoggerConstants.GET_BOOK_BY_ID_C)
     return this.booksService.getBooksById(id.id)
 }
+@RolesDecorator(AppConstants.ADMIN)
 @Put(AppConfig.UPDATE_BOOK)
 async updateBook(@Body () book ,@Param (AppConfig.ID) id  ) {
     this.logger.log(LoggerConstants.UPDATE_BOOK_C)
     return this.booksService.updateBook(book , id.id)
 }
+@RolesDecorator(AppConstants.ADMIN)
 @Delete(AppConfig.DELETE_BOOK)
 async deleteBook(@Param (AppConfig.ID) id ) {
     this.logger.log(LoggerConstants.DELETE_BOOK_C)

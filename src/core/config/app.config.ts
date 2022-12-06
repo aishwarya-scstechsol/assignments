@@ -9,6 +9,7 @@ export class AppConfig {
 
   public static PORT = 3000
   public static API_PREFIX = '/library'
+  public static API_PREFIX_USERS ='/library/auth'
 
  
  

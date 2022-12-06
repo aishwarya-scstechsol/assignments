@@ -32,7 +32,7 @@ const token =await  jwt.sign({
     
 
   },AppConstants.SECRET_KEY,{
-    expiresIn:AppConfig.EXPIRES_IN
+    expiresIn:AppConstants.EXPIRES_IN
   })
 
   return token

@@ -10,7 +10,7 @@ import { AuthService } from "./auth.service";
 import { JwtStrategy } from "./jwt.strategy";
 
 @Module({
-    imports : [CoreModule,PassportModule.register({defaultStrategy :'jwt'}),JwtModule.register({secret :AppConstants.SECRET_KEY ,signOptions :{expiresIn : '1h'}})],
+    imports : [CoreModule,PassportModule.register({defaultStrategy :AppConstants.JWT}),JwtModule.register({secret :AppConstants.SECRET_KEY ,signOptions :{expiresIn : AppConstants.EXPIRES_IN}})],
     controllers : [AuthController],
     providers : [AuthService,JwtStrategy,...modelProviders],
     exports : [JwtStrategy,PassportModule]

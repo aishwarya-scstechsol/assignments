@@ -34,15 +34,7 @@ export class  AuthService{
         
         
     ) { }
-    // constructor (@Inject(DBConfig.USERS_MODEL) private readonly usersModel ){}
-
-// validateUser = async (emailID :string ,password :string ) : Promise<any>=>{
-//     this.logger.log("authenticating user")
-//     const user = await this.usersModel.findOne({emailID : emailID})
-//     this.logger.verbose(user)
-
-
-// }
+    
 
 
 
@@ -78,37 +70,37 @@ createUser = async (userInformation ) =>{
                    
 
     }
-tryEncryption =async(information)=>{
+// tryEncryption =async(information)=>{
   
-    this.logger.log("try encryption at service")
+//     this.logger.log("try encryption at service")
    
-   let informationTOBeEncrypted =JSON.stringify(information)
-    const encryptedText = await this.encrypt.encrypt(informationTOBeEncrypted , this.iv , "password")
+//    let informationTOBeEncrypted =JSON.stringify(information)
+//     const encryptedText = await this.encrypt.encrypt(informationTOBeEncrypted , this.iv , "password")
     
 
-let id = await this.user.tryEncryption(encryptedText)
+// let id = await this.user.tryEncryption(encryptedText)
 
-return id 
-
-
-
-}
+// return id 
 
 
 
-retrieve =async(id)=>{
-    this.logger.log('retrieving')
-    let see = await this.user.find(id)
+// }
 
-    let decryptedText = await this.decrypt.decrypt(see.information ,this.iv ,"password")
-    this.logger.verbose(decryptedText)
 
-    let seeq = decryptedText.toString()
-   let  s =JSON.parse(seeq)
 
-this.logger.error(s)
+// retrieve =async(id)=>{
+//     this.logger.log('retrieving')
+//     let see = await this.user.find(id)
+
+//     let decryptedText = await this.decrypt.decrypt(see.information ,this.iv ,"password")
+//     this.logger.verbose(decryptedText)
+
+//     let seeq = decryptedText.toString()
+//    let  s =JSON.parse(seeq)
+
+// this.logger.error(s)
     
-    return s
-}
+//     return s
+// }
 
 }

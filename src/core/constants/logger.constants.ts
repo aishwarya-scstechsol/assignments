@@ -18,7 +18,8 @@ export class LoggerConstants {
 
 
     public static LOGIN_S = 'login initiated at service level'
-
+    public static GUARD = 'roles guard initiated'
+    public static GUARD_ERR = 'insufficient permissions'
 
    
     public static USER_EXISTS = "method for checking if user already exists initiated"
@@ -39,6 +40,12 @@ export class LoggerConstants {
     public static TG = 'token generation method initiated'
     public static TG_ERR = 'error while generating jwt token'
 
+    public static DECRYPTION = "decryption method initiated"
+    public static DECRYPTION_ERR = "error while decrypting"
+    public static ENCRYPTION = "encryption method initiated"
+    public static ENCRYPTION_ERR = "error while encrypting"
+    public static HASH_PASSWORD = "hash password method initiated"
+    public static HASH_PASSWORD_ERR = "error while excecuting hash password method"
 
 
     public static MIDDLEWARE = "checkAuth middleware initiated"
@@ -78,7 +85,11 @@ export class LoggerConstants {
     public static DELETE_BOOK_S = "book delete method initiated at service level"
     public static DELETE_BOOK_C = "book delete method initiated at controller level"
     public static DELETE_BOOK_ERR = "error while updating book"
-    
+
+    public static PIPE = "file mimetype validation method initiated"
+    public static PIPE_ERR = "error while validation file mimetype"
+    public static VALIDATING_PAYLOAD = "validating payload method initiated"
+    public static VALIDATING_PAYLOAD_ERR = 'error while validating payload'
 
 
 

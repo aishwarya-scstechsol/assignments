@@ -6,6 +6,8 @@ import {ExtractJwt,Strategy } from  "passport-jwt"
 import { DBConfig } from '../core/config/db.config';
 
 import { AppConstants } from '../core/constants/app.constants';
+import { ExceptionConstants } from '../core/constants/exception.constants';
+import { LoggerConstants } from '../core/constants/logger.constants';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -20,14 +22,15 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload): Promise<any> {
-    this.logger.verbose(payload)
-    this.logger.log("inside jwt strategy")
+    
+    this.logger.log(LoggerConstants.VALIDATING_PAYLOAD)
     const user = await this.userModel.findOne({_id : payload._id
       
     })
-    this.logger.verbose(user)
+    
     if(!user ){
-throw new HttpException("UNAUTHORIZED" ,HttpStatus.UNAUTHORIZED)
+      this.logger.error(LoggerConstants.VALIDATING_PAYLOAD)
+throw new HttpException(ExceptionConstants.UNAUTHORIZED ,HttpStatus.UNAUTHORIZED)
     }
     return user
   }

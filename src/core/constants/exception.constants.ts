@@ -7,7 +7,7 @@ export class ExceptionConstants{
     public static UPDATE_ERR = "could not update"
 
     public static DELETE_ERR = "could not delete"
-
+    public static UNAUTHORIZED = "unauthorized"
     public static ID_ERR = "please enter a valid mongoDB ID"
     public static REQUEST_BODY_EMPTY = "please provide contents to be updated"
     public static USER_NOT_FOUND = "user with is email is not found"
@@ -16,4 +16,5 @@ export class ExceptionConstants{
     public static NO_RECORD_FOUND = "no record found"
     public static ONLY_IMAGES = "only images are allowed"
     public static PROPER_FILE = "please provide a jpg  or jpeg or png file"
+    public static INVALID_CREDENTIALS  = "INVALID_CREDENTIALS"
 }
