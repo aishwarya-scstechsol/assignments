@@ -29,7 +29,7 @@ constructor (private readonly authService : AuthService){}
      @Post()
      
      async createUsers( @Body(new ValidationPipe({ skipMissingProperties: false })) information : UsersDTO) {
-        this.logger.verbose("boom")
+        
          this.logger.log(LoggerConstants.CREATE_USER_C)
          let result = await this.authService.createUser(information)
          return AppConstants.USER_CREATION
