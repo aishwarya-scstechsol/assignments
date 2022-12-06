@@ -4,6 +4,7 @@ import { Injectable, Logger } from '@nestjs/common';
 
 import { randomBytes } from 'crypto';
 import { async } from 'rxjs';
+import { AppConstants } from '../core/constants/app.constants';
 import { LoggerConstants } from '../core/constants/logger.constants';
 import { BooksDAO } from '../core/dao/books.dao';
 
@@ -43,13 +44,16 @@ export class BooksService {
 
     updateBook = async (book , id) => {
         this.logger.log(LoggerConstants.UPDATE_BOOK_S)
-        return await this.bookDAO.updateBookInfo(book , id )
+       await this.bookDAO.updateBookInfo(book , id )
+       return AppConstants.UPDATED
 
     }
 
     deleteBook = async (id) => {
         this.logger.log(LoggerConstants.DELETE_BOOK_S)
-        return await this.bookDAO.deleteBook(id)
+         await this.bookDAO.deleteBook(id)
+         return AppConstants.DELETED
+
 
     }
 }

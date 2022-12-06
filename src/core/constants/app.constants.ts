@@ -16,6 +16,8 @@ public static TAG = 'USER'
 public static SECRET_KEY = "practice"
 public static JWT = 'jwt'
 public static EXPIRES_IN = '1h'
+public static UPDATED = {message : "updated successfully"}
+public static DELETED = {message : "deleted successfully"}
                                     
 
 }

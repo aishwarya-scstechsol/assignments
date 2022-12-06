@@ -79,7 +79,7 @@ export class BooksDAO implements IBooksDAO {
         try{
             await this.getBookByID(id)
 
-            return await this.booksModel.updateOne({_id : id } , {"$set" : {price : book.price , image : "waitss" , pages : book.pages , name : book.name , author : book.author}})
+            return await this.booksModel.updateOne({_id : id } , {"$set" : {price : book.price  , pages : book.pages , name : book.name , author : book.author}})
 
     
         }
