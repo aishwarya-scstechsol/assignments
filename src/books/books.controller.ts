@@ -1,4 +1,4 @@
-import { UseGuards, UseInterceptors, UseFilters, Controller, Logger, Get, StreamableFile, Post, Body, Put, Res, Param, Delete, UploadedFile, ParseFilePipe } from "@nestjs/common"
+import { UseGuards, UseInterceptors, UseFilters, Controller, Logger, Get, StreamableFile, Post, Body, Put, Res, Param, Delete, UploadedFile, ParseFilePipe, ValidationPipe } from "@nestjs/common"
 import { AuthGuard } from "@nestjs/passport"
 import { ApiTags } from "@nestjs/swagger"
 import { AppConfig } from "../core/config/app.config"
@@ -32,7 +32,7 @@ private readonly logger = new Logger(BooksController.name)
 @UseInterceptors(FileInterceptor(AppConstants.IMAGE , {dest : '/a'}))
 @RolesDecorator(AppConstants.ADMIN)
 @Post(AppConfig.CREATE_BOOK)
-async createBook(@UploadedFile(new FileValidationPipe()) file: Express.Multer.File,@Body() book : BooksDTO , @CurrentUser() user ){
+async createBook(@UploadedFile(new FileValidationPipe()) file: Express.Multer.File,@Body(new ValidationPipe({skipMissingProperties : false})) book : BooksDTO , @CurrentUser() user ){
     this.logger.log(LoggerConstants.CREATE_BOOK_C)
     
     return await this.booksService.createBook(book,user,file)
