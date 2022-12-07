@@ -45,7 +45,7 @@ export class BooksDTO {
     @IsNotEmpty()
    pages : Number
 
-   @ApiProperty()
+    @ApiProperty()
     @IsNumber()
     @IsNotEmpty()
     price : Number 
