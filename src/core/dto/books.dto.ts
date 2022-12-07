@@ -41,12 +41,12 @@ export class BooksDTO {
 
 
     @ApiProperty()
-    @IsNumber()
+    
     @IsNotEmpty()
    pages : Number
 
     @ApiProperty()
-    @IsNumber()
+   
     @IsNotEmpty()
     price : Number 
    

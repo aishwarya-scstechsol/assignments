@@ -35,7 +35,8 @@ private readonly logger = new Logger(BooksController.name)
 async createBook(@UploadedFile(new FileValidationPipe()) file: Express.Multer.File,@Body(new ValidationPipe({skipMissingProperties : false})) book : BooksDTO , @CurrentUser() user ){
     this.logger.log(LoggerConstants.CREATE_BOOK_C)
     
-    return await this.booksService.createBook(book,user,file)
+     await this.booksService.createBook(book,user,file)
+     return AppConstants.CREATED_BOOK
 }
        
 
@@ -53,13 +54,15 @@ async getBookByID(@Param (AppConfig.ID) id )  {
 @Put(AppConfig.UPDATE_BOOK)
 async updateBook(@Body () book ,@Param (AppConfig.ID) id  ) {
     this.logger.log(LoggerConstants.UPDATE_BOOK_C)
-    return this.booksService.updateBook(book , id.id)
+    await  this.booksService.updateBook(book , id.id)
+    return AppConstants.UPDATED
 }
 @RolesDecorator(AppConstants.ADMIN)
 @Delete(AppConfig.DELETE_BOOK)
 async deleteBook(@Param (AppConfig.ID) id ) {
     this.logger.log(LoggerConstants.DELETE_BOOK_C)
-    return this.booksService.deleteBook(id.id)
+    await  this.booksService.deleteBook(id.id)
+    return AppConstants.DELETED
 }
 
 

@@ -18,6 +18,7 @@ public static JWT = 'jwt'
 public static EXPIRES_IN = '1h'
 public static UPDATED = {message : "updated successfully"}
 public static DELETED = {message : "deleted successfully"}
+public static CREATED_BOOK = {message : "book created successfully"}
                                     
 
 }
